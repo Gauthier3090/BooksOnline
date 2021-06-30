@@ -7,7 +7,6 @@ url = "http://books.toscrape.com/catalogue/" \
       "the-rise-and-fall-of-the-third-reich-a-history-of-nazi-germany_454/index.html"
 
 response = requests.get(url)
-response.encoding = 'utf-8'
 
 filename = 'files/information.csv'
 data = []
