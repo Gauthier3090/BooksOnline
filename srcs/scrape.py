@@ -43,3 +43,23 @@ def get_product_description(soup: BeautifulSoup):
     paragraph = soup.findAll('p', attrs={'class': None})
     for description in paragraph:
         return description.text
+
+
+# Function who return the category of book
+def get_category(soup: BeautifulSoup):
+    link = soup.findAll('ul', attrs={'class': 'breadcrumb'})
+    for a in link:
+        category = a.findAll('a', href=True)
+    return category[-1].text
+
+
+# Function who return the number of reviews
+def get_rating(data: dict):
+    return data['Number of reviews']
+
+
+# Function who return the url of image
+def get_url_img(soup: BeautifulSoup):
+    img = soup.find('div', attrs={'class': 'item active'}).find('img')
+    url = img['src'].replace('../..', 'http://books.toscrape.com')
+    return url
