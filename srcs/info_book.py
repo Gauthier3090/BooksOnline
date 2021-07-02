@@ -5,7 +5,9 @@ from bs4 import BeautifulSoup
 
 if __name__ == "__main__":
     url = "http://books.toscrape.com/catalogue/" \
-          "the-rise-and-fall-of-the-third-reich-a-history-of-nazi-germany_454/index.html"
+          "the-rise-and-fall-of-the-third-reich-a-history-of-nazi-germany_454"\
+          "index.html"\
+
     filename = 'files/product.csv'
     data = []
     dictionary = {}
@@ -23,7 +25,7 @@ if __name__ == "__main__":
         data.append(scrape.get_category(soup))
         data.append(scrape.get_rating(dictionary))
         data.append(scrape.get_url_img(soup))
-        file.create_file_csv('files', filename, data)
+        file.create_file_csv('files', filename, data, False)
         print("Data saved in the following csv file : " + filename, end="")
     else:
         print("Error: url not found", end="")
