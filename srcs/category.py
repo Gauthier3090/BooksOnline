@@ -1,54 +1,26 @@
 import requests
 import scrape
 import file
+import info_book
 from bs4 import BeautifulSoup
 
-
-def get_url_books(soup: BeautifulSoup):
-    array_url = []
-    url_site = 'http://books.toscrape.com/catalogue/'
-    div = soup.findAll('div', attrs={'class', 'image_container'})
-    for link in div:
-        a = link.findAll('a')
-        for url in a:
-            url_book = url['href'].replace('../../../', url_site)
-            array_url.append(url_book)
-    return array_url
-
-
-if __name__ == '__main__':
-    url = 'http://books.toscrape.com/catalogue/category/books/mystery_3/'\
-        'page-1.html'
-    url_books = []
-    filename = "files/category.csv"
+def get_books_category(url: str, filename: str):
     next_page = True
     i = 0
     j = 1
     while (next_page):
-        if (i != 0):
+        if i == 1:
+            url = url.replace('index', 'page-' + str(j))
+        if i >= 2:
             url = url.replace('page-' + str(i), 'page-' + str(j))
         response = requests.get(url)
         if response.ok:
             soup = BeautifulSoup(response.content, 'html.parser')
-            url_books = get_url_books(soup)
+            url_books = scrape.get_url_books(soup)
             index = 0
             for element in url_books:
                 if response.ok:
-                    data = []
-                    dictionary = {}
-                    response = requests.get(element)
-                    soup = BeautifulSoup(response.content, 'html.parser')
-                    data.append(url)
-                    dictionary = scrape.get_product_info(soup)
-                    data.append(scrape.get_upc(dictionary))
-                    data.append(scrape.get_title(soup))
-                    data.append(scrape.get_price_excluding_tva(dictionary))
-                    data.append(scrape.get_price_including_tva(dictionary))
-                    data.append(scrape.get_available(dictionary))
-                    data.append(scrape.get_product_description(soup))
-                    data.append(scrape.get_category(soup))
-                    data.append(scrape.get_rating(dictionary))
-                    data.append(scrape.get_url_img(soup))
+                    data = info_book.get_info_book(element)
                     if (index == 0 and i == 0):
                         file.create_file_csv('files', filename, data)
                     else:
@@ -58,4 +30,9 @@ if __name__ == '__main__':
             j += 1
         else:
             next_page = False
+
+if __name__ == '__main__':
+    url = 'https://books.toscrape.com/catalogue/category/books/default_15/index.html'
+    filename = "files/category.csv"
+    get_books_category(url, filename)
     print("Data saved in the following csv file : " + filename, end="")
