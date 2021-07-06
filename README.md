@@ -12,4 +12,4 @@ Pour **lancer** le **premier** **script**, exécutez `py srcs\info_book.py`
 
 Pour **lancer** le **second script**, exécutez `py srcs\category.py`
 
-Pour **lancer** le **troisime script**, exécutez `py srcs\all_books.py`
+Pour **lancer** le **troisieme script**, exécutez `py srcs\all_books.py`
