@@ -20,6 +20,7 @@ def get_info_book(url: str):
     data.append(scrape.get_category(soup))
     data.append(scrape.get_rating(soup))
     data.append(scrape.get_url_img(soup))
+    file.create_img_book(scrape.get_url_img(soup), scrape.get_title(soup))
     return data
 
 if __name__ == "__main__":
@@ -30,6 +31,6 @@ if __name__ == "__main__":
     if response.ok:
         data = get_info_book(url)
         file.create_file_csv('files', filename, data)
-        print("Data saved in the following csv file : " + filename, end="")
+        print("Data saved in the following csv file : " + filename)
     else:
-        print("Error: url not found", end="")
+        print("Error: url not found")

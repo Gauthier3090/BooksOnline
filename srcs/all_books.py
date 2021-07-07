@@ -14,5 +14,4 @@ if __name__ == '__main__':
         for name, link in zip(names_category[1:], url_category[1:]):
             filename = 'files/' + name + '.csv'
             category.get_books_category(link, filename)
-            print("Data saved in the following csv file : ", end="")
-            print(filename)
+            print("Data saved in the following csv file : " + filename)

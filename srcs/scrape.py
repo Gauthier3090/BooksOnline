@@ -56,7 +56,7 @@ def get_category(soup: BeautifulSoup):
 
 # Function which return the number of reviews
 def get_rating(soup: BeautifulSoup):
-    rating = {'One': 1, 'Two': 2, 'Three': 3, 'Four': 4}
+    rating = {'One': 1, 'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5}
     paragraph = soup.find('div', attrs={'class': 'col-sm-6 product_main'}).findAll('p')
     i = 0
     for p in paragraph:

@@ -35,4 +35,4 @@ if __name__ == '__main__':
     url = 'https://books.toscrape.com/catalogue/category/books/default_15/index.html'
     filename = "files/category.csv"
     get_books_category(url, filename)
-    print("Data saved in the following csv file : " + filename, end="")
+    print("Data saved in the following csv file : " + filename)

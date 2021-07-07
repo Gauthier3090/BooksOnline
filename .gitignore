@@ -129,8 +129,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# csv
+# directories
 files
+img
 
 # vscode
 .vscode
