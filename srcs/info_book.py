@@ -18,7 +18,7 @@ def get_info_book(url: str):
     data.append(scrape.get_available(dictionary))
     data.append(scrape.get_product_description(soup))
     data.append(scrape.get_category(soup))
-    data.append(scrape.get_rating(dictionary))
+    data.append(scrape.get_rating(soup))
     data.append(scrape.get_url_img(soup))
     return data
 
