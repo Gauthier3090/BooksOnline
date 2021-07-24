@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">Projet 1: BooksOnline</h1>
+# Projet 1: BooksOnline
 
 ![Image of OpenClassrooms](https://onatestepourtoi.com/wp-content/uploads/2020/02/Logo_openclassrooms_onatestepourtoi.jpg)
 
